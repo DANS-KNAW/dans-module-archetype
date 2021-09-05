@@ -19,7 +19,7 @@
     <inceptionYear>${inceptionYear}</inceptionYear>
 
     <properties>
-        <main-class>${package}.Command</main-class>
+        <main-class>${package}.${javaName}Application</main-class>
     </properties>
 
     <scm>
