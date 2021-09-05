@@ -18,14 +18,12 @@
 echo Setting .gitignores...
 mv _gitignore .gitignore
 
-echo Removing unnecessary directory nesting in scala source code...
-mv src/main/scala/nl/knaw/dans/${projectPrefix}/${moduleSubpackage} src/main/scala/${package}
-rm -fr src/main/scala/nl
-mv src/test/scala/nl/knaw/dans/${projectPrefix}/${moduleSubpackage} src/test/scala/${package}
-rm -fr src/test/scala/nl
-
 echo Making helper scripts executable...
 chmod +x *.sh
+
+echo "Remove .keep files for empty directories"
+find src/main/java -name .keep -delete
+find src/test/java -name .keep -delete
 
 which run-reset-env.sh > /dev/null
 if [ $? -eq 0 ]; then

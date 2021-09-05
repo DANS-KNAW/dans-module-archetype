@@ -13,7 +13,6 @@
         <requiredProperty key="moduleSubpackage"/>
         <requiredProperty key="name"/>
         <requiredProperty key="package"/>
-        <requiredProperty key="projectPrefix"/>
         <requiredProperty key="version">
             <defaultValue>0.0.1-SNAPSHOT</defaultValue>
         </requiredProperty>

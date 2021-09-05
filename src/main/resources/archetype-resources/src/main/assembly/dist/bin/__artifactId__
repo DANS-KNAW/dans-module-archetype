@@ -1,24 +1,7 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-#!/usr/bin/env bash
+#!/bin/sh
 
-BINPATH=`readlink -f ${symbol_dollar}0`
-APPHOME=`dirname \`dirname ${symbol_dollar}BINPATH \``
-MODULE=`basename ${symbol_dollar}APPHOME`
-LOGBACK_HOME=${symbol_dollar}HOME/logback.xml
-LOGBACK_RPM=/etc/opt/dans.knaw.nl/${symbol_dollar}MODULE/logback.xml
-LOGBACK_APPHOME=${symbol_dollar}APPHOME/cfg/logback.xml
+SCRIPTNAME=${symbol_dollar}(basename ${symbol_dollar}0)
+BINPATH=${symbol_dollar}(command readlink -f ${symbol_dollar}0 2> /dev/null || command grealpath ${symbol_dollar}0 2> /dev/null)
+APPHOME=${symbol_dollar}(dirname  ${symbol_dollar}(dirname ${symbol_dollar}BINPATH))
 
-if [ -f ${symbol_dollar}LOGBACK_HOME ]; then
-    LOGBACK_CFG=${symbol_dollar}LOGBACK_HOME
-elif [ -f ${symbol_dollar}LOGBACK_RPM ]; then
-    LOGBACK_CFG=${symbol_dollar}LOGBACK_RPM
-else
-    LOGBACK_CFG=${symbol_dollar}LOGBACK_APPHOME
-fi
-
-LC_ALL=en_US.UTF-8 \
-java -Dlogback.configurationFile=${symbol_dollar}LOGBACK_CFG \
-     -Dapp.home=${symbol_dollar}APPHOME \
-     -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}MODULE.jar "${symbol_dollar}@"
+java -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}SCRIPTNAME.jar "${symbol_dollar}@"

@@ -19,7 +19,6 @@
             </includes>
             <excludes>
                 <exclude>*.sh</exclude>
-                <exclude>version</exclude>
             </excludes>
         </fileSet>
         <fileSet>
@@ -27,19 +26,8 @@
             <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>${artifactId}</include>
-                <include>${artifactId}-service-start</include>
-                <include>${artifactId}-initd.sh</include>
             </includes>
             <fileMode>0755</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist/bin</directory>
-            <outputDirectory>bin</outputDirectory>
-            <filtered>true</filtered>
-            <includes>
-                <include>version</include>
-            </includes>
-            <fileMode>0444</fileMode>
         </fileSet>
         <fileSet>
             <directory>${symbol_dollar}{project.basedir}/src/main/assembly/dist</directory>
