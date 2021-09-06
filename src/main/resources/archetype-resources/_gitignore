@@ -16,7 +16,7 @@
 .DS_Store
 /site
 /apphome.sh
-/home/
+/etc/
 /data/
 /data-*/
 /.vagrant/

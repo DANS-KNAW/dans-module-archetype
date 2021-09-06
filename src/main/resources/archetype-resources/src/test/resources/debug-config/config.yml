@@ -1,9 +1,0 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-${symbol_pound}
-${symbol_pound} Module configuration file
-${symbol_pound}
-${symbol_pound} Please, modify the configuration below to match your environment. Also, delete and/or modify
-${symbol_pound} this description.
-

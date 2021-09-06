@@ -1,0 +1,20 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+${symbol_pound}
+${symbol_pound} Module configuration file
+${symbol_pound}
+${symbol_pound} Please, modify the configuration below to match your environment.
+${symbol_pound} Also, delete and/or modify this description.
+
+logging:
+  level: INFO
+  loggers:
+    "dans.knaw.nl":
+      level: DEBUG
+      additive: false
+  appenders:
+    - type: console
+    - type: file
+      archive: false
+      currentLogFilename: data/${artifactId}.log

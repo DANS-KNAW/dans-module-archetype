@@ -57,7 +57,7 @@
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
-            <directory>src/test/resources/debug-config</directory>
+            <directory>src/test/resources/debug-etc</directory>
             <includes>
                 <include>**/**</include>
             </includes>
