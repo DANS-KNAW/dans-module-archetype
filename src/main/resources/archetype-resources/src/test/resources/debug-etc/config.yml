@@ -1,20 +1,32 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-${symbol_pound}
-${symbol_pound} Module configuration file
-${symbol_pound}
-${symbol_pound} Please, modify the configuration below to match your environment.
-${symbol_pound} Also, delete and/or modify this description.
 
+server:
+  applicationContextPath: /
+  adminContextPath: /
+  applicationConnectors:
+    - type: http
+      ${symbol_pound} Replace with port number unique for this service
+      port: 20000
+  adminConnectors:
+    - type: http
+      ${symbol_pound} Replace with port number unique for this service
+      port: 20001
+
+${symbol_pound}
+${symbol_pound} See https://www.dropwizard.io/en/latest/manual/configuration.html#logging
+${symbol_pound}
 logging:
   level: INFO
   loggers:
     "dans.knaw.nl":
-      level: DEBUG
+      level: TRACE
       additive: false
   appenders:
     - type: console
+      logFormat: "%-5p [%d{ISO8601}] [%t] %c: %m%n%rEx"
+
     - type: file
       archive: false
-      currentLogFilename: data/${artifactId}.log
+      currentLogFilename: data/dd-workflow-step-vault-metadata.log

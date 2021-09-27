@@ -9,8 +9,7 @@ ${artifactId}
 SYNOPSIS
 --------
 
-    ${artifactId} (synopsis of command line parameters)
-    ${artifactId} (... possibly multiple lines for subcommands)
+    ${artifactId} { server | check }
 
 
 DESCRIPTION
@@ -22,28 +21,32 @@ ${description}
 ARGUMENTS
 ---------
 
-    Options:
-
-       -h, --help      Show help message
-       -v, --version   Show version of this program
-
-    Subcommand: run-service - Starts ${name} as a daemon that services HTTP requests
-       -h, --help   Show help message
-    ---
+        positional arguments:
+        {server,check}         available commands
+        
+        named arguments:
+        -h, --help             show this help message and exit
+        -v, --version          show the application version and exit
 
 EXAMPLES
 --------
 
-    ${artifactId} -o value
+<!-- Add examples of invoking this module from the command line or via HTTP other interfaces -->
+    
 
 INSTALLATION AND CONFIGURATION
 ------------------------------
 Currently this project is built as an RPM package for RHEL7/CentOS7 and later. The RPM will install the binaries to
 `/opt/dans.knaw.nl/${artifactId}` and the configuration files to `/etc/opt/dans.knaw.nl/${artifactId}`. 
 
-To install the module on systems that do not support RPM, you can copy and unarchive the tarball to the target host.
-You will have to take care of placing the files in the correct locations for your system yourself. For instructions
-on building the tarball, see next section.
+For installation on systems that do no support RPM and/or systemd:
+
+1. Build the tarball (see next section).
+2. Extract it to some location on your system, for example `/opt/dans.knaw.nl/${artifactId}`.
+3. Start the service with the following command
+   ```
+   /opt/dans.knaw.nl/${artifactId}/bin/${artifactId} server /opt/dans.knaw.nl/${artifactId}/cfg/config.yml 
+   ```
 
 BUILDING FROM SOURCE
 --------------------

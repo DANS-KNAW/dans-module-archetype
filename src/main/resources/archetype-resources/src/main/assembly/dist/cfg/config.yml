@@ -8,5 +8,13 @@ ${symbol_pound} Please, modify the configuration below to match your environment
 ${symbol_pound} this description.
 
 server:
-  type: default
-  maxThreads: 1024
+  applicationContextPath: /
+  adminContextPath: /
+  applicationConnectors:
+    - type: http
+      ${symbol_pound} Replace with port number unique for this service
+      port: 20000
+  adminConnectors:
+    - type: http
+      ${symbol_pound} Replace with port number unique for this service
+      port: 20001

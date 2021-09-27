@@ -28,7 +28,7 @@ find src/test/java -name .keep -delete
 which run-reset-env.sh > /dev/null
 if [ $? -eq 0 ]; then
     echo Resetting debug-config...
-    run-reset-env.sh
+    start-env.sh
 fi
 
 #
