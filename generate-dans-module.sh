@@ -24,7 +24,6 @@ read -p "Name module's main package (i.e. the one UNDER nl.knaw.dans): " SUBPACK
 read -p "Description (one to four sentences): " DESCRIPTION
 
 ARTIFACT_PHRASE=`echo $ARTIFACT_ID | tr '-' ' ' | awk '{for (i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1'`
-MODULE_NAME=`echo $ARTIFACT_PHRASE | awk '{$1=toupper($1); print $0}'`
 MODULE_JAVA_NAME=${ARTIFACT_PHRASE// }
 
 mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
@@ -34,7 +33,7 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
         -DartifactId=$ARTIFACT_ID \
         -Dpackage=nl.knaw.dans.$SUBPACKAGE \
         -DmoduleSubpackage=$SUBPACKAGE \
-        -Dname="$MODULE_NAME" \
+        -DprojectName="$ARTIFACT_PHRASE" \
         -DjavaName="$MODULE_JAVA_NAME" \
         -Ddescription="$DESCRIPTION" \
         -DinceptionYear=$(date +"%Y")

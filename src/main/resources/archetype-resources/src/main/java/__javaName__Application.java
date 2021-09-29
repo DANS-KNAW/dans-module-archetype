@@ -16,7 +16,7 @@ public class ${javaName}Application extends Application<${javaName}Configuration
 
     @Override
     public String getName() {
-        return "${name}";
+        return "${projectName}";
     }
 
     @Override

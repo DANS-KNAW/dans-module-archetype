@@ -1,5 +1,5 @@
 [Unit]
-Description=${name} Service
+Description=${project.name} Service
 
 [Service]
 ExecStart=/opt/dans.knaw.nl/${artifactId}/bin/${artifactId} server /etc/opt/dans.knaw.nl/${artifactId}/config.yml

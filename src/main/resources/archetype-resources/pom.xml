@@ -13,7 +13,7 @@
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
 
-    <name>${name}</name>
+    <name>${projectName}</name>
     <url>https://github.com/DANS-KNAW/${artifactId}</url>
     <description>${description}</description>
     <inceptionYear>${inceptionYear}</inceptionYear>

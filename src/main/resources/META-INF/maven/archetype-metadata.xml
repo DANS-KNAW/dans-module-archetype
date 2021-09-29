@@ -11,7 +11,7 @@
             <defaultValue>nl.knaw.dans</defaultValue>
         </requiredProperty>
         <requiredProperty key="moduleSubpackage"/>
-        <requiredProperty key="name"/>
+        <requiredProperty key="projectName"/>
         <requiredProperty key="package"/>
         <requiredProperty key="version">
             <defaultValue>0.0.1-SNAPSHOT</defaultValue>
