@@ -38,6 +38,7 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
         -Ddescription="$DESCRIPTION" \
         -DinceptionYear=$(date +"%Y")
 
-cd $ARTIFACT_ID
-sh init-project.sh
+pushd $ARTIFACT_ID
+bash init-project.sh
 rm init-project.sh
+popd

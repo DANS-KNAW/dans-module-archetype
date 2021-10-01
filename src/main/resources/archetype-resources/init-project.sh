@@ -15,20 +15,32 @@
 # limitations under the License.
 #
 
-echo Setting .gitignores...
+START_ENV="start-env.sh"
+
+echo Setting .gitignore...
 mv _gitignore .gitignore
 
 echo Making helper scripts executable...
 chmod +x *.sh
 
-echo "Remove .keep files for empty directories"
+echo -n "Removing .keep files for empty directories..."
 find src/main/java -name .keep -delete
 find src/test/java -name .keep -delete
+echo "OK"
 
-which run-reset-env.sh > /dev/null
+echo -n "Checking if we can find $START_ENV..."
+which "$START_ENV" > /dev/null
 if [ $? -eq 0 ]; then
-    echo Resetting debug-config...
-    start-env.sh
+    echo "OK"
+    echo "Running $START_ENV..."
+    eval $START_ENV
+    if [ $? -eq 0 ]; then
+      echo "$START_ENV: OK"
+    else
+      echo "$START_ENV: FAILED"
+    fi
+else
+    echo "NOT FOUND. Ignoring."
 fi
 
 #
