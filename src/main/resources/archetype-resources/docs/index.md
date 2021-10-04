@@ -1,7 +1,5 @@
 ${artifactId}
 ===========
-![Build Status](https://github.com/DANS-KNAW/${artifactId}/actions/workflows/build.yml/badge.svg)
-![Site Status](https://github.com/DANS-KNAW/${artifactId}/actions/workflows/docs.yml/badge.svg)
 
 <!-- Remove this comment and extend the descriptions below -->
 
