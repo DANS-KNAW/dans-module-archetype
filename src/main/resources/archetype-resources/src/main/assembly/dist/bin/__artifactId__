@@ -3,5 +3,14 @@
 SCRIPTNAME=${symbol_dollar}(basename ${symbol_dollar}0)
 BINPATH=${symbol_dollar}(command readlink -f ${symbol_dollar}0 2> /dev/null || command grealpath ${symbol_dollar}0 2> /dev/null)
 APPHOME=${symbol_dollar}(dirname  ${symbol_dollar}(dirname ${symbol_dollar}BINPATH))
+CONFIG_PATH=/etc/opt/dans.knaw.nl/${symbol_dollar}SCRIPTNAME/config.yml
 
-java -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}SCRIPTNAME.jar "${symbol_dollar}@"
+# If last_arg arg is config.yml, use that instead of the one in etc
+# See: https://stackoverflow.com/a/1853993
+for last_arg; do true; done
+if [[ $(basename ${symbol_dollar}last_arg) == config.yml ]]; then
+ echo "${symbol_dollar}last_arg"
+ CONFIG_PATH=""
+fi
+
+java -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}SCRIPTNAME.jar "${symbol_dollar}@" "${symbol_dollar}CONFIG_PATH"
