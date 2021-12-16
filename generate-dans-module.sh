@@ -19,7 +19,7 @@
 DEFAULT_ARCHETYPE_VERSION=0.0.1-SNAPSHOT
 
 read -p "dans-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
-read -p "Module artifactId (e.g., dans-test-module): " ARTIFACT_ID
+read -p "Module artifactId: " ARTIFACT_ID
 read -p "Name module's main package (i.e. the one UNDER nl.knaw.dans): " SUBPACKAGE
 read -p "Description (one to four sentences): " DESCRIPTION
 
