@@ -30,6 +30,10 @@ plugins:
   - markdownextradata
   - search
 
+extra:
+  dropwizard: 'https://www.dropwizard.io/en/latest/'
+  mvn_arch_plugin: 'https://maven.apache.org/archetype/maven-archetype-plugin/'
+
 markdown_extensions:
   - attr_list
   #- legacy_attr
