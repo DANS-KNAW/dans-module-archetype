@@ -16,8 +16,7 @@
 
 site_name: dans-module-archetype
 theme:
-  name: dans
-  disclaimer: false
+  name: readthedocs
 
 repo_name: DANS-KNAW/dans-module-archetype
 repo_url: https://github.com/DANS-KNAW/dans-module-archetype
@@ -36,7 +35,6 @@ extra:
 
 markdown_extensions:
   - attr_list
-  #- legacy_attr
   - admonition
   - codehilite:
       guess_lang: false
