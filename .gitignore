@@ -22,9 +22,11 @@
 
 # mkdocs
 /site
+/venv/
 
 # Eclipse
 /.project
 /.settings
 /.cladocssspath
 /.cache
+
