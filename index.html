@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>dans-module-archetype</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Manual";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> dans-module-archetype
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Manual</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arguments">ARGUMENTS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">EXAMPLES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation-and-configuration">INSTALLATION AND CONFIGURATION</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development">DEVELOPMENT</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#building-from-source">Building from source</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="common-practices/">Common Practices</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">dans-module-archetype</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Manual</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-module-archetype/edit/master/docs/index.md"> Edit on DANS-KNAW/dans-module-archetype</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dans-module-archetype">dans-module-archetype<a class="headerlink" href="#dans-module-archetype" title="Permanent link">&para;</a></h1>
+<p>Generate a skeleton DANS Module.</p>
+<h2 id="synopsis">SYNOPSIS<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>   generate-dans-module.sh
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Creates a DANS module based on <a href="https://www.dropwizard.io/en/latest/" target="_blank:">DropWizard</a>. It uses the <a href="https://maven.apache.org/archetype/maven-archetype-plugin/" target="_blank:">maven archetype plugin</a>.</p>
+<h2 id="arguments">ARGUMENTS<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h2>
+<p>The <code>generate-dans-module.sh</code> script will interactively query you for argument values.</p>
+<h2 id="examples">EXAMPLES<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>This assumes that you have copied the <code>generate-dans-module.sh</code> script to a directory that is on your <code>$PATH</code>. On the Mac that could be <code>/usr/local/bin</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/git/test/
+generate-dans-module.sh
+dans-module-archetype version? <span class="o">(</span><span class="nv">default</span> <span class="o">=</span> <span class="m">0</span>.0.1-SNAPSHOT<span class="o">)</span>:
+Module artifactId: dans-test-module
+Name module<span class="err">&#39;</span>s main package <span class="o">(</span>i.e. the one UNDER nl.knaw.dans<span class="o">)</span>: <span class="nb">test</span>
+Description <span class="o">(</span>one to four sentences<span class="o">)</span>: This is a <span class="nb">test</span> module
+<span class="o">[</span>INFO<span class="o">]</span> Scanning <span class="k">for</span> projects...
+<span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> ------------------&lt; org.apache.maven:standalone-pom &gt;-------------------
+<span class="o">[</span>INFO<span class="o">]</span> Building Maven Stub Project <span class="o">(</span>No POM<span class="o">)</span> <span class="m">1</span>
+<span class="o">[</span>INFO<span class="o">]</span> --------------------------------<span class="o">[</span> pom <span class="o">]</span>---------------------------------
+<span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> &gt;&gt;&gt; maven-archetype-plugin:3.1.2:generate <span class="o">(</span>default-cli<span class="o">)</span> &gt; generate-sources @ standalone-pom &gt;&gt;&gt;
+<span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">&lt;&lt;&lt;</span> maven-archetype-plugin:3.1.2:generate <span class="o">(</span>default-cli<span class="o">)</span> &lt; generate-sources @ standalone-pom <span class="o">&lt;&lt;&lt;</span>
+<span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> --- maven-archetype-plugin:3.1.2:generate <span class="o">(</span>default-cli<span class="o">)</span> @ standalone-pom ---
+<span class="o">[</span>INFO<span class="o">]</span> Generating project <span class="k">in</span> Interactive mode
+<span class="o">[</span>INFO<span class="o">]</span> Archetype repository not defined. Using the one from <span class="o">[</span>nl.knaw.dans:dans-module-archetype:0.0.1-SNAPSHOT<span class="o">]</span> found <span class="k">in</span> catalog <span class="nb">local</span>
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">groupId</span> <span class="o">=</span> nl.knaw.dans
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">artifactId</span> <span class="o">=</span> dans-test-module
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">version</span> <span class="o">=</span> <span class="m">0</span>.0.1-SNAPSHOT
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">package</span> <span class="o">=</span> nl.knaw.dans.test
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">description</span> <span class="o">=</span> This is a <span class="nb">test</span> module
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">inceptionYear</span> <span class="o">=</span> <span class="m">2021</span>
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">javaName</span> <span class="o">=</span> DansTestModule
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">moduleSubpackage</span> <span class="o">=</span> <span class="nb">test</span>
+<span class="o">[</span>INFO<span class="o">]</span> Using property: <span class="nv">projectName</span> <span class="o">=</span> Dans Test Module
+Confirm properties configuration:
+groupId: nl.knaw.dans
+artifactId: dans-test-module
+version: <span class="m">0</span>.0.1-SNAPSHOT
+package: nl.knaw.dans.test
+description: This is a <span class="nb">test</span> module
+inceptionYear: <span class="m">2021</span>
+javaName: DansTestModule
+moduleSubpackage: <span class="nb">test</span>
+projectName: Dans Test Module
+ Y: :
+</code></pre></div>
+<p>Now hit Enter to accept these settings and the module will be generated and built for the first time.</p>
+<h2 id="installation-and-configuration">INSTALLATION AND CONFIGURATION<a class="headerlink" href="#installation-and-configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add <code>https://maven.dans.knaw.nl/releases/</code> as a plug-in repository if you want to use a released version of this archetype.</li>
+<li>Clone and build the project if you want to use a snapshot.</li>
+</ul>
+<h2 id="development">DEVELOPMENT<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<h3 id="building-from-source">Building from source<a class="headerlink" href="#building-from-source" title="Permanent link">&para;</a></h3>
+<p>Prerequisites:</p>
+<ul>
+<li>Maven 3.3.3 or higher</li>
+</ul>
+<p>Steps:</p>
+<div class="codehilite"><pre><span></span><code>    git clone https://github.com/DANS-KNAW/dans-module-archetype.git
+    cd dans-module-archetype
+    mvn install
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="common-practices/" class="btn btn-neutral float-right" title="Common Practices">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="common-practices/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.3.0
+Build Date UTC : 2022-06-26 09:41:41.825915+00:00
+-->
