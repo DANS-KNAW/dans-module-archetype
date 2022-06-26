@@ -2,19 +2,27 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 ${symbol_pound}
-${symbol_pound} Module configuration file
+${symbol_pound} ${artifactId} configuration file
 ${symbol_pound}
-${symbol_pound} Please, modify the configuration below to match your environment. Also, delete and/or modify
-${symbol_pound} this description.
-
 server:
   applicationContextPath: /
   adminContextPath: /
   applicationConnectors:
     - type: http
       ${symbol_pound} Replace with port number unique for this service
-      port: 20000
+      port: 20000 ${symbol_pound} TODO: Replace with unique port number
   adminConnectors:
     - type: http
       ${symbol_pound} Replace with port number unique for this service
-      port: 20001
+      port: 20001 ${symbol_pound} TODO: Replace with unique port number
+
+${symbol_pound}
+${symbol_pound} See https://www.dropwizard.io/en/latest/manual/configuration.html#logging
+${symbol_pound}
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      archive: false
+      timeZone: system
+      currentLogFilename: /var/opt/dans.knaw.nl/log/${artifactId}/${artifactId}.log
