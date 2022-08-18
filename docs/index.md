@@ -5,18 +5,17 @@ Generate a skeleton DANS Module.
 
 SYNOPSIS
 --------
-
-       generate-dans-module.sh
+```text
+generate-dans-module.sh
+```
 
 DESCRIPTION
 -----------
-
 Creates a DANS module based on [DropWizard]({{ dropwizard }}){:target=_blank:}. It uses the [maven archetype plugin]({{ mvn_arch_plugin }}){:target=_blank:}.
 
 
 ARGUMENTS
 ----------
-
 The `generate-dans-module.sh` script will interactively query you for argument values.
 
 EXAMPLES
@@ -86,6 +85,8 @@ Prerequisites:
 
 Steps:
 
-        git clone https://github.com/DANS-KNAW/dans-module-archetype.git
-        cd dans-module-archetype
-        mvn install
+```commandline
+git clone https://github.com/DANS-KNAW/dans-module-archetype.git
+cd dans-module-archetype
+mvn install
+```
