@@ -23,7 +23,7 @@ EXAMPLES
 
 This assumes that you have copied the `generate-dans-module.sh` script to a directory that is on your `$PATH`. On the Mac that could be `/usr/local/bin`
 
-```bash
+```text
 cd ~/git/test/
 generate-dans-module.sh
 dans-module-archetype version? (default = 0.0.1-SNAPSHOT):
