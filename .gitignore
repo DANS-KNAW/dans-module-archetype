@@ -23,6 +23,7 @@
 # mkdocs
 /site
 /venv/
+/.venv-mkdocs
 
 # Eclipse
 /.project
