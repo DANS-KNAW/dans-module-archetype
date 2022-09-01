@@ -27,7 +27,7 @@ Packaging and Installation
 Documentation
 -------------
 Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a
-skeleton site. Use the `start-virtual-env.sh` and `start-mkdocs.sh` scripts in [dans-dev-tools] to start the site locally and see
+skeleton site. Use the `start-virtual-env-mkdocs.sh` and `start-mkdocs.sh` scripts in [dans-dev-tools] to start the site locally and see
 what it looks like after you have made your changes.
 
 Each documentation site follows a standard lay-out and includes the following:
