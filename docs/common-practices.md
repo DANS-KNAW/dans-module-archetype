@@ -7,15 +7,35 @@ Code Style
 * Install the IntelliJ [code style] and [inspections]. Format the source code with these settings in our own projects. Resolve the warnings
   indicated by the inspections.
 * In Dataverse try to minimize code changes due to reformatting, so only apply formatting to code that you have changed anyway.
+* In the POM file keep the order the of the elements as follows (note that some are optional):
+    * `modelVersion`
+    * `parent`
+    * `groupId`
+    * `artifactId`
+    * `version`
+    * `name`
+    * `url`
+    * `description`
+    * `inceptionYear`
+    * `properties`
+    * `scm`
+    * `dependencyManagement`
+    * `dependencies`
+    * `build`
+    * `repositories`
+    * `profiles`
 
 Dependency Management
 ---------------------
 Dependency management of Java projects is done with Maven. Projects should inherit from `dans-dropwizard-project`. The first
-thing that most projects will include is 
+thing that most projects will include is `io.dropwizard:dropwizard-core`.
+
 
 
 Testing
 -------
+
+* Unit test names should be as descriptive as possible. Since this will often involve creating long test names, use `snake_case` instead of `camelCase` here.
 
 Debugging
 ---------
