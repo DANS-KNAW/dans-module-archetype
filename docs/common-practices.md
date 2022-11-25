@@ -30,25 +30,28 @@ Dependency Management
 Dependency management of Java projects is done with Maven. Projects should inherit from `dans-dropwizard-project`. The first
 thing that most projects will include is `io.dropwizard:dropwizard-core`.
 
-
-
 Testing
 -------
 
 * Unit test names should be as descriptive as possible. Since this will often involve creating long test names, use `snake_case` instead of `camelCase` here.
+* Unit tests will often need to write some temporary data to disk. The location for this is `<project-dir>/target/test/<ClassNameOfUnitTest>`. By working under
+  `target` we make sure the unit tests don't interfere with the project itself or the test files we are using for [debugging](#debugging).
 
 Debugging
 ---------
 
+* For debugging use [dans-dev-tools]{:target=_blank}. Start the program with the `start-*debug.sh` helper scripts and then attach IntelliJ to the VM.
+* When debugging you will often want to use temporary test data or configure certain directories for the application under test to use. This is the
+  purpose of the `<project-dir>/data` folder.
 
 Packaging and Installation
 --------------------------
 
 Documentation
 -------------
-Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a
-skeleton site. Use the `start-virtual-env-mkdocs.sh` and `start-mkdocs.sh` scripts in [dans-dev-tools] to start the site locally and see
-what it looks like after you have made your changes.
+Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a skeleton site. Use
+the `start-virtual-env-mkdocs.sh` and `start-mkdocs.sh` scripts in [dans-dev-tools]{:target=_blank} to start the site locally and see what it looks like after
+you have made your changes.
 
 Each documentation site follows a standard lay-out and includes the following:
 
