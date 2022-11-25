@@ -36,7 +36,9 @@ Testing
 * Unit test names should be as descriptive as possible. Since this will often involve creating long test names, use `snake_case` instead of `camelCase` here.
 * Unit tests will often need to write some temporary data to disk. The location for this is `<project-dir>/target/test/<ClassNameOfUnitTest>`. By working under
   `target` we make sure the unit tests don't interfere with the project itself or the test files we are using for [debugging](#debugging).
-
+* Unit tests should clear their temporary directory **before** the tests start, but leave everything on disk after finishing. This allows you to diagnose
+  any problems with a test by running it and inspecting its temporary directory.
+  
 Debugging
 ---------
 
