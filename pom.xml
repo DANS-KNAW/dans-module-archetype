@@ -30,7 +30,7 @@
     <name>DANS Module Archetype</name>
     <description>Maven archetype for creating a DANS module. Uses DropWizard and some extras provided by DANS.</description>
     <scm>
-        <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <repositories>
