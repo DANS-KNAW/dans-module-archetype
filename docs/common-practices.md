@@ -23,6 +23,7 @@ Code Style
     * `dependencies`
     * `build`
     * `repositories`
+    * `distributionManagement`
     * `profiles`
 
 Dependency Management
