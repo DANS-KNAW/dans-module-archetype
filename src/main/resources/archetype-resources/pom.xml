@@ -6,10 +6,9 @@
     <parent>
         <groupId>nl.knaw.dans</groupId>
         <artifactId>dd-parent-service</artifactId>
-        <version>0.1.2-SNAPSHOT</version>
+        <version>0.5.0</version>
     </parent>
 
-    <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
 
@@ -71,6 +70,10 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>rpm-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>nl.knaw.dans</groupId>
+                        <artifactId>dans-nexus-maven-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
