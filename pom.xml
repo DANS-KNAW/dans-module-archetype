@@ -55,6 +55,15 @@
             <url>https://maven.dans.knaw.nl/snapshots/</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>DANS</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>https://maven.dans.knaw.nl/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <extensions>
             <extension>
