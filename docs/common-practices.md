@@ -26,6 +26,14 @@ Code Style
     * `distributionManagement`
     * `profiles`
 
+### Lombok
+
+Use [Lombok] for:
+
+* Adding loggers with the `@Slf4j` annotation (this names the logger after the fully qualified class name automatically).
+* Creating getters, setters and constructors on value objects (i.e. the main purpose of the object is to store values and not to perform operations).
+
+
 Dependency Management
 ---------------------
 Dependency management of Java projects is done with Maven. Projects should inherit from `dans-dropwizard-project`. The first
@@ -82,3 +90,5 @@ the JavaDocs, so that you can make full use of the extended Markdown support of 
 [inspections]: dans-intellij-inspections.xml
 
 [dans-dev-tools]: https://github.com/DANS-KNAW/dans-dev-tools#startsh-scripts
+
+[Lombok]: https://projectlombok.org/
