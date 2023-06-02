@@ -24,6 +24,7 @@ repo_url: https://github.com/DANS-KNAW/dans-module-archetype
 nav:
   - Manual: index.md
   - 'Common Practices': common-practices.md
+  - ⇒ DANS Data Station Architecture: arch.md
 
 plugins:
   - markdownextradata
