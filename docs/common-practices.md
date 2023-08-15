@@ -33,7 +33,6 @@ Use [Lombok] for:
 * Adding loggers with the `@Slf4j` annotation (this names the logger after the fully qualified class name automatically).
 * Creating getters, setters and constructors on value objects (i.e. the main purpose of the object is to store values and not to perform operations).
 
-
 Dependency Management
 ---------------------
 Dependency management of Java projects is done with Maven. Projects should inherit from `dans-dropwizard-project`. The first
@@ -47,7 +46,7 @@ Testing
   `target` we make sure the unit tests don't interfere with the project itself or the test files we are using for [debugging](#debugging).
 * Unit tests should clear their temporary directory **before** the tests start, but leave everything on disk after finishing. This allows you to diagnose
   any problems with a test by running it and inspecting its temporary directory.
-  
+
 Debugging
 ---------
 
@@ -61,8 +60,7 @@ Packaging and Installation
 Documentation
 -------------
 Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a skeleton site. Use
-the `start-virtual-env-mkdocs.sh` and `start-mkdocs.sh` scripts in [dans-dev-tools]{:target=_blank} to start the site locally and see what it looks like after
-you have made your changes.
+the `start-mkdocs.sh` script in [dans-dev-tools]{:target=_blank} to start the site locally and see what it looks like after you have made your changes.
 
 Each documentation site follows a standard lay-out and includes the following:
 

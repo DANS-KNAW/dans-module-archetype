@@ -1,16 +1,19 @@
-DANS module design and code conventions
-=======================================
+DANS module design
+==================
 
-This document describes the design and code conventions for DANS modules. By following a standard design and coding style we hope to make it easier for
-developers to understand each other's code and to make it easier to maintain and extend the code. The conventions build on the Dropwizard conventions but
-go beyond that, filling in the blanks where Dropwizard is silent and adding some extra conventions that are specific to DANS.
+This document describes the design of a DANS module. By following a standard design and coding style we hope to make it easier for developers to understand
+each other's code and to make it easier to maintain and extend the code. The conventions build on the Dropwizard conventions but go beyond that, filling in the
+blanks where Dropwizard is silent and adding some extra conventions that are specific to DANS.
 
 The conventions are described in the following sections:
 
 * [Project structure](#project-structure)
 * [Java packages](#java-packages)
 * [Generated classes](#generated-classes)
-* [Code style](#code-style)
+* [Services](#services)
+* [Application and configuration](#application-and-configuration)
+* [API definition](#api-definition)
+* [Command line interface](#command-line-interface)
 
 Project structure
 -----------------
@@ -93,12 +96,40 @@ In order to stress the correspondence between the client and the microservice su
 
 Services
 --------
-Services are classes that implement some functionality that is used by the core of the module. They are usually a bit more generic than
-the rest of the core and serve to isolate the core from the details of the implementation of the service. For example, a service may
-implement the functionality to send an email. The core may use this service to send an email message to a user, but it does not need to know
-how the email is sent. This also makes it easier to unit-test the main core classes, because the service can be mocked.
+Services are classes that implement some supporting functionality that is used by the core of the module. This functionality is usually a bit more generic than
+the rest of the core and serve to isolate the core from the details of the implementation of the service. For example, a service may implement the functionality
+to send an email. The core may use this service to send an email message to a user, but it does not need to know how the email is sent. This also makes it
+easier to unit-test the main core classes, because the service can be mocked.
 
+That said, the boundary between the core and the services is not always clear-cut. That is why the services are located in
+the `nl.knaw.dans.<module-name>.core.services`. This makes it clear that these classes are part of the core, but not the main core classes. The classes in
+`services` should from time to time be reviewed to see if they can be moved to a separate library. It is a good practise to define an interface for each
+service and to use that interface in the core classes. This makes it easier to move the service to a separate library later on.
 
+Typical services are: reading XML files, sending emails, managing a task queue, etc.
+
+The classes in `client` are essentially also services, but since they don't implement any functionality themselves, but only call other microservices, they
+are not located in the `services` package.
+
+Application and configuration
+-----------------------------
+
+The application class is located in the `nl.knaw.dans.<module-name>` package. It is called `<Module-name>Application` and extends `io.dropwizard.Application`.
+Its purpose is to initialize the application. This means it will create all the bits and pieces that are needed to run the application and connect them
+together. It should not do anything else.
+
+The main configuration class is located in the `nl.knaw.dans.<module-name>` package as well. It is called `<Module-name>Configuration` and
+extends `io.dropwizard.Configuration`. The configuration is serialized as YAML and is used to configure the application. It is a tree structure with every
+level corresponding to a bean class. Since this can amount to a lot of classes, the configuration is usually split up in multiple files, and the helper files
+should be located in the `nl.knaw.dans.<module-name>.config` package.
+
+API definition
+--------------
+TODO
+
+Command line interface
+----------------------
+TODO
 
 <!-- Link references -->
 
