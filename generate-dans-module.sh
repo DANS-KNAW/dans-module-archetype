@@ -16,7 +16,7 @@
 #
 
 
-DEFAULT_ARCHETYPE_VERSION=0.0.1-SNAPSHOT
+DEFAULT_ARCHETYPE_VERSION=0.3.1-SNAPSHOT
 
 read -p "dans-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
 read -p "Module artifactId: " ARTIFACT_ID
@@ -38,7 +38,7 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
         -Ddescription="$DESCRIPTION" \
         -DinceptionYear=$(date +"%Y")
 
-pushd $ARTIFACT_ID
+pushd $ARTIFACT_ID || exit 1
 bash init-project.sh
 rm init-project.sh
-popd
+popd || exit 1
