@@ -1,4 +1,4 @@
-Common Practices
+Coding Practices
 ================
 
 Code Style
