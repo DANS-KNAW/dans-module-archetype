@@ -51,7 +51,7 @@ package in more detail.
   a thin layer on top of the database that deal with finding, creating, updating and deleting entities. Typical methods on a DAO
   are `findById`, `findAll`, `create`, `update` and `delete`.
 * Database entities are simply domain classes that are persisted in the database. They are annotated with JPA annotations so that they can be persisted by the
-  DAO classes. The DAO classes are responsible for creating, updating and deleting entities. They are located in the `core` package because they defined domain
+  DAO classes. The DAO classes are responsible for creating, updating and deleting entities. Entities are located in the `core` package because they define domain
   concepts.
 * The `resources` package contains the implementation of HTTP endpoints, both API and UI (if present). The API receives and sends back DTOs. Resources should
   also **not** implement business logic.
