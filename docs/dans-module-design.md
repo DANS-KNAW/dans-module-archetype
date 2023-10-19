@@ -111,7 +111,7 @@ In essence, the classes in `client` and `db` are also services. However, because
 Application and configuration
 -----------------------------
 
-The application class is located in the `nl.knaw.dans.<module-name>` package. It is called `<Module-name>Application` and extends `io.dropwizard.Application`.
+The application class is located in the `nl.knaw.dans.<module-name>` package. It is called `<Module-name>Application` and extends `io.dropwizard.core.Application`.
 Its purpose is to initialize the application. This means it will create all the bits and pieces that are needed to run the application and connect them
 together. It should not do anything else.
 
