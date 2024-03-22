@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Common Practices - dans-module-archetype</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Common Practices";
+        var mkdocs_page_input_path = "common-practices.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dans-module-archetype
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Manual</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dans-module-design/">Module design</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Common Practices</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#code-style">Code Style</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lombok">Lombok</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dependency-management">Dependency Management</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#packaging-and-installation">Packaging and Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#javadocs">JavaDocs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../arch/">⇒ DANS Data Station Architecture</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dans-module-archetype</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Common Practices</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-module-archetype/edit/master/docs/common-practices.md"> Edit on DANS-KNAW/dans-module-archetype</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="coding-practices">Coding Practices<a class="headerlink" href="#coding-practices" title="Permanent link">&para;</a></h1>
+<h2 id="code-style">Code Style<a class="headerlink" href="#code-style" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Install the IntelliJ <a href="../dans-intellij-codestyles.xml">code style</a> and <a href="../dans-intellij-inspections.xml">inspections</a>. Format the source code with these settings in our own projects. Resolve the warnings
+  indicated by the inspections.</li>
+<li>In Dataverse try to minimize code changes due to reformatting, so only apply formatting to code that you have changed anyway.</li>
+<li>In the POM file keep the order the of the elements as follows (note that some are optional):<ul>
+<li><code>modelVersion</code></li>
+<li><code>parent</code></li>
+<li><code>groupId</code></li>
+<li><code>artifactId</code></li>
+<li><code>version</code></li>
+<li><code>name</code></li>
+<li><code>url</code></li>
+<li><code>description</code></li>
+<li><code>inceptionYear</code></li>
+<li><code>properties</code></li>
+<li><code>scm</code></li>
+<li><code>dependencyManagement</code></li>
+<li><code>dependencies</code></li>
+<li><code>build</code></li>
+<li><code>repositories</code></li>
+<li><code>distributionManagement</code></li>
+<li><code>profiles</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="lombok">Lombok<a class="headerlink" href="#lombok" title="Permanent link">&para;</a></h3>
+<p>Use <a href="https://projectlombok.org/">Lombok</a> for:</p>
+<ul>
+<li>Adding loggers with the <code>@Slf4j</code> annotation (this names the logger after the fully qualified class name automatically).</li>
+<li>Creating getters, setters and constructors on value objects (i.e. the main purpose of the object is to store values and not to perform operations).</li>
+</ul>
+<h2 id="dependency-management">Dependency Management<a class="headerlink" href="#dependency-management" title="Permanent link">&para;</a></h2>
+<p>Dependency management of Java projects is done with Maven. Projects should inherit from <code>dans-dropwizard-project</code>. The first
+thing that most projects will include is <code>io.dropwizard:dropwizard-core</code>.</p>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Unit test names should be as descriptive as possible. Since this will often involve creating long test names, use <code>snake_case</code> instead of <code>camelCase</code> here.</li>
+<li>Unit tests will often need to write some temporary data to disk. The location for this is <code>&lt;project-dir&gt;/target/test/&lt;ClassNameOfUnitTest&gt;</code>. By working under
+  <code>target</code> we make sure the unit tests don't interfere with the project itself or the test files we are using for <a href="#debugging">debugging</a>.</li>
+<li>Unit tests should clear their temporary directory <strong>before</strong> the tests start, but leave everything on disk after finishing. This allows you to diagnose
+  any problems with a test by running it and inspecting its temporary directory.</li>
+</ul>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
+<ul>
+<li>For debugging use <a href="https://github.com/DANS-KNAW/dans-dev-tools#startsh-scripts" target="_blank">dans-dev-tools</a>. Start the program with the <code>start-*debug.sh</code> helper scripts and then attach IntelliJ to the VM.</li>
+<li>When debugging you will often want to use temporary test data or configure certain directories for the application under test to use. This is the
+  purpose of the <code>&lt;project-dir&gt;/data</code> folder.</li>
+</ul>
+<h2 id="packaging-and-installation">Packaging and Installation<a class="headerlink" href="#packaging-and-installation" title="Permanent link">&para;</a></h2>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a skeleton site. Use
+the <code>start-mkdocs.sh</code> script in <a href="https://github.com/DANS-KNAW/dans-dev-tools#startsh-scripts" target="_blank">dans-dev-tools</a> to start the site locally and see what it looks like after you have made your changes.</p>
+<p>Each documentation site follows a standard lay-out and includes the following:</p>
+<ul>
+<li><code>index.md</code>, including these sections:<ul>
+<li>SYNOPSIS - overview of the main command line usage</li>
+<li>DESCRIPTION - most of your docs should go here</li>
+<li>ARGUMENTS - a copy of the command line help</li>
+<li>EXAMPLES (optional) - if relevant</li>
+<li>INSTALLATION AND CONFIGURATION - boilerplate text about how to install and configure. The configuration settings should be
+  documented not here, but in comments in the configuration file.</li>
+<li>BUILDING FROM SOURCE - boilerplate text about how to build the project</li>
+</ul>
+</li>
+<li><code>dev.md</code> (optional) - documentation that is only relevant for developers of this module.</li>
+<li>More pages can be added. In general start by adding documentation to the DESCRIPTION section of <code>index.md</code>. At the point where
+  <code>index.md</code> is becoming very large you may start moving the fine print to separate pages and link to those from the DESCRIPTION<br />
+  section.</li>
+</ul>
+<h3 id="javadocs">JavaDocs<a class="headerlink" href="#javadocs" title="Permanent link">&para;</a></h3>
+<p>If the project is a library it should include JavaDocs. Extensive code examples are best relegated to separated pages, outside
+the JavaDocs, so that you can make full use of the extended Markdown support of mkdocs. You can then link to those from the JavaDocs.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dans-module-design/" class="btn btn-neutral float-left" title="Module design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../arch/" class="btn btn-neutral float-right" title="⇒ DANS Data Station Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dans-module-design/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../arch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
