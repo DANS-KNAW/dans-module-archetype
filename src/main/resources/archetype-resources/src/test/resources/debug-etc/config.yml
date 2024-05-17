@@ -19,9 +19,6 @@ ${symbol_pound} See https://www.dropwizard.io/en/latest/manual/configuration.htm
 ${symbol_pound}
 logging:
   level: INFO
-  loggers:
-    "nl.knaw.dans":
-      level: TRACE
   appenders:
     - type: console
       logFormat: "%-5p [%d{ISO8601}] [%t] %c: %m%n%rEx"
@@ -29,3 +26,6 @@ logging:
     - type: file
       archive: false
       currentLogFilename: data/${artifactId}.log
+  loggers:
+    'nl.knaw.dans': DEBUG
+    'org.hibernate.engine.internal.StatisticalLoggingSessionEventListener': 'OFF'
