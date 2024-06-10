@@ -2,7 +2,6 @@
 
 SCRIPTNAME=${symbol_dollar}(basename ${symbol_dollar}0)
 BINPATH=${symbol_dollar}(command readlink -f ${symbol_dollar}0 2> /dev/null || command grealpath ${symbol_dollar}0 2> /dev/null)
-APPHOME=${symbol_dollar}(dirname  ${symbol_dollar}(dirname ${symbol_dollar}BINPATH))
-CONFIG_PATH=/etc/opt/dans.knaw.nl/${symbol_dollar}SCRIPTNAME/config.yml
+APPHOME=${symbol_dollar}(dirname  "${symbol_dollar}(dirname ${symbol_dollar}BINPATH)")
 
-java -Ddans.default.config=${symbol_dollar}CONFIG_PATH -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}SCRIPTNAME.jar "${symbol_dollar}@"
+java ${symbol_dollar}DANS_JAVA_OPTS ${symbol_dollar}JAVA_OPTS -jar ${symbol_dollar}APPHOME/bin/${symbol_dollar}SCRIPTNAME.jar "${symbol_dollar}@"
