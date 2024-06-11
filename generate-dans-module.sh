@@ -15,15 +15,16 @@
 # limitations under the License.
 #
 
-
-DEFAULT_ARCHETYPE_VERSION=0.3.1-SNAPSHOT
+# Read the module version from the pom.xml file in the same directory into DEFAULT_ARCHETYPE_VERSION
+SCRIPT_DIR=$(dirname "$0")
+DEFAULT_ARCHETYPE_VERSION=$(xmlstarlet sel -N ns=http://maven.apache.org/POM/4.0.0 -t -v '//ns:project/ns:version' "$SCRIPT_DIR/pom.xml")
 
 read -p "dans-module-archetype version? (default = $DEFAULT_ARCHETYPE_VERSION): " ARCHETYPE_VERSION
 read -p "Module artifactId: " ARTIFACT_ID
 read -p "Name module's main package (i.e. the one UNDER nl.knaw.dans): " SUBPACKAGE
 read -p "Description (one to four sentences): " DESCRIPTION
 
-ARTIFACT_PHRASE=`echo $ARTIFACT_ID | tr '-' ' ' | awk '{for (i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1'`
+ARTIFACT_PHRASE=$(echo "$ARTIFACT_ID" | tr '-' ' ' | awk '{for (i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1')
 MODULE_JAVA_NAME=${ARTIFACT_PHRASE// }
 
 mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
@@ -36,7 +37,7 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
         -DprojectName="$ARTIFACT_PHRASE" \
         -DjavaName="$MODULE_JAVA_NAME" \
         -Ddescription="$DESCRIPTION" \
-        -DinceptionYear=$(date +"%Y")
+        -DinceptionYear="$(date +'%Y')"
 
 pushd $ARTIFACT_ID || exit 1
 bash init-project.sh
