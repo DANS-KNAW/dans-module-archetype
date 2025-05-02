@@ -25,13 +25,13 @@
         <relativePath />
     </parent>
     <artifactId>dans-module-archetype</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
     <name>DANS Module Archetype</name>
     <description>Maven archetype for creating a DANS module. Uses DropWizard and some extras provided by DANS.</description>
     <scm>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
-        <tag>v1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <repositories>
         <repository>
