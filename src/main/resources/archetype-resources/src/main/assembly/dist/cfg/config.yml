@@ -22,7 +22,6 @@ server:
         archive: false
         timeZone: system
         currentLogFilename: /var/opt/dans.knaw.nl/log/${artifactId}/request.log
-        logFormat: "%-5p [%d{ISO8601}] %c{0}: %m%n%dwREx"
 
 
 ${symbol_pound}
