@@ -2,13 +2,18 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
-package ${package};
+package ${package}.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.core.Configuration;
 
 import javax.validation.constraints.NotEmpty;
 
-public class ${javaName}Configuration extends Configuration {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class ${javaName}Config extends Configuration {
 
 }

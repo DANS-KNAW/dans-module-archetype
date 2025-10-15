@@ -6,7 +6,14 @@ repo_name: DANS-KNAW/${artifactId}
 repo_url: https://github.com/DANS-KNAW/${artifactId}
 
 nav:
-  - Manual: index.md
+  - Manual:
+      - Description: index.md
+      - Installation: installation.md
+      - Configuration: config.md
+      - API: to-api.md
+      - Context: context.md
+  - Development:
+      - Overview: dev.md
 
 plugins:
   - markdownextradata

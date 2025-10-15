@@ -7,8 +7,9 @@ package ${package};
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
+import ${package}.config.${javaName}Config;
 
-public class ${javaName}Application extends Application<${javaName}Configuration> {
+public class ${javaName}Application extends Application<${javaName}Config> {
 
     public static void main(final String[] args) throws Exception {
         new ${javaName}Application().run(args);
@@ -20,12 +21,12 @@ public class ${javaName}Application extends Application<${javaName}Configuration
     }
 
     @Override
-    public void initialize(final Bootstrap<${javaName}Configuration> bootstrap) {
+    public void initialize(final Bootstrap<${javaName}Config> bootstrap) {
         // TODO: application initialization
     }
 
     @Override
-    public void run(final ${javaName}Configuration configuration, final Environment environment) {
+    public void run(final ${javaName}Config config, final Environment environment) {
 
     }
 

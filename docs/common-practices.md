@@ -50,7 +50,8 @@ Testing
 Debugging
 ---------
 
-* For debugging use [dans-dev-tools]{:target=_blank}. Start the program with the `start-*debug.sh` helper scripts and then attach IntelliJ to the VM.
+* For debugging use the scripts in [dans-core-systems]{:target=_blank} (only available for members of the DANS-KNAW organization). Start the program with the
+  `start-*debug.sh` helper scripts and then attach IntelliJ to the VM.
 * When debugging you will often want to use temporary test data or configure certain directories for the application under test to use. This is the
   purpose of the `<project-dir>/data` folder.
 
@@ -59,8 +60,8 @@ Packaging and Installation
 
 Documentation
 -------------
-Each module has its associated documentation site, which is published at io.github.com. The archetype sets up the project with a skeleton site. Use
-the `start-mkdocs.sh` script in [dans-dev-tools]{:target=_blank} to start the site locally and see what it looks like after you have made your changes.
+Each module has its associated documentation site, which is published at dans-knaw.github.io. The archetype sets up the project with a skeleton site. Use
+the `start-mkdocs.sh` script in [dans-core-systems]{:target=_blank} to start the site locally and see what it looks like after you have made your changes.
 
 Each documentation site follows a standard lay-out and includes the following:
 
@@ -87,6 +88,6 @@ the JavaDocs, so that you can make full use of the extended Markdown support of 
 
 [inspections]: dans-intellij-inspections.xml
 
-[dans-dev-tools]: https://github.com/DANS-KNAW/dans-dev-tools#startsh-scripts
+[dans-core-systems]: {{ dans_core_systems_repo_url }}
 
 [Lombok]: https://projectlombok.org/

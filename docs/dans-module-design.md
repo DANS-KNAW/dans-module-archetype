@@ -13,15 +13,15 @@ Projects use the standard Maven project structure. The main source code is in `s
 
 DANS specific additions are documented in the table below.
 
-| Directory                      | Description                                                                              |
-|--------------------------------|------------------------------------------------------------------------------------------|
-| `data/`                        | Contains data files that are used for testing and debugging. **Ignored by Git.**         |
-| `docs/`                        | Contains static files for the documentation site.                                        |
-| `etc/`                         | Contains configuration files for local testing. **Ignored by Git.**                      |
-| `src/main/assembly/dist`       | Contains static files that are used in the creation of the (RPM) distribution package.   |
-| `src/main/rpm`                 | RPM scriplets. (Normally, these do not need to be modified.)                             |
-| `src/test/resources/debug-etc` | Contains a version of the configuration files that is geared towards debugging locally.  |
-| `src/test/resources/test-etc`  | (Optional) contains one of more versions of the configurtion files used in unit testing. |                              
+| Directory                      | Description                                                                                  |
+|--------------------------------|----------------------------------------------------------------------------------------------|
+| `data/`                        | Contains data files that are used for testing and debugging. <br>**Ignored by Git.**         |
+| `docs/`                        | Contains static files for the documentation site.                                            |
+| `etc/`                         | Contains configuration files for local testing. **Ignored by Git.**                          |
+| `src/main/assembly/dist`       | Contains static files that are used in the creation of the (RPM) <br>distribution package.   |
+| `src/main/rpm`                 | RPM scriplets. (Normally, these do not need to be modified.)                                 |
+| `src/test/resources/debug-etc` | Contains a version of the configuration files that is geared towards<br> debugging locally.  |
+| `src/test/resources/test-etc`  | (Optional) contains one of more versions of the configurtion files used<br> in unit testing. |                              
 
 Java packages
 -------------
@@ -51,7 +51,8 @@ package in more detail.
   a thin layer on top of the database that deal with finding, creating, updating and deleting entities. Typical methods on a DAO
   are `findById`, `findAll`, `create`, `update` and `delete`.
 * Database entities are simply domain classes that are persisted in the database. They are annotated with JPA annotations so that they can be persisted by the
-  DAO classes. The DAO classes are responsible for creating, updating and deleting entities. Entities are located in the `core` package because they define domain
+  DAO classes. The DAO classes are responsible for creating, updating and deleting entities. Entities are located in the `core` package because they define
+  domain
   concepts.
 * The `resources` package contains the implementation of HTTP endpoints, both API and UI (if present). The API receives and sends back DTOs. Resources should
   also **not** implement business logic.
@@ -111,32 +112,32 @@ In essence, the classes in `client` and `db` are also services. However, because
 Application and configuration
 -----------------------------
 
-The application class is located in the `nl.knaw.dans.<module-name>` package. It is called `<Module-name>Application` and extends `io.dropwizard.core.Application`.
-Its purpose is to initialize the application. This means it will create all the bits and pieces that are needed to run the application and connect them
-together. It should not do anything else.
+The application class is located in the `nl.knaw.dans.<module-name>` package. It is called `<Module-name>Application` and extends
+`io.dropwizard.core.Application`. Its purpose is to initialize the application. This means it will create all the bits and pieces that are needed to run the
+application and connect them together. It should not do anything else.
 
-The configuration class is located in the `nl.knaw.dans.<module-name>.config` It is called `<Module-name>Configuration` and
-extends `io.dropwizard.Configuration`. The configuration is serialized as YAML and is used to configure the application. It is a tree structure with every
-level corresponding to a bean class. Since this can amount to a lot of classes, the configuration is usually split up in multiple files, and the helper files
-should also be located in the `nl.knaw.dans.<module-name>.config` package.
+The configuration class is located in the `nl.knaw.dans.<module-name>.config` It is called `<Module-name>Config` and extends `io.dropwizard.Configuration`. The
+configuration is serialized as YAML and is used to configure the application. It is a tree structure with every level corresponding to a bean class with a name
+that ends with `Config`. Since this can amount to a lot of classes, the configuration is usually split up in multiple files, and the helper files should also be
+located in the `nl.knaw.dans.<module-name>.config` package.
 
 API definition
 --------------
 
-The API is defined in an OpenAPI file. The file is located in a separate project called `<module-name>-api`. The reason why the API is defined in a separate 
+The API is defined in an OpenAPI file. The file is located in a separate project called `<module-name>-api`. The reason why the API is defined in a separate
 project is that is can be distributed as a Maven artifact. This allows other projects to use the API definition to generate client code for the microservice.
-The API project is very simple and serves only to create a JAR file with the OpenAPI file in it.
+The API project is very simple and serves only to create a JAR file with the OpenAPI file in it. A skeleton for the API project can be created with the 
+[DANS API archetype]{:target=_blank}.
 
 Command line interface
 ----------------------
 
-Most services will have a command line interface (CLI) that an administrator can use to issue commands to the service. The CLI is implemented in Python code. 
-The client code for the CLI is generated from the OpenAPI specification of the API. 
-
-<!-- Link references -->
+Most services will have a command line interface (CLI) that an administrator can use to issue commands to the service. To generate a CLI project use 
+[DANS CLI archetype]{:target=_blank}.
 
 [Dropwizard convention]: https://www.dropwizard.io/en/latest/manual/core.html#organizing-your-project
-
+[DANS API archetype]: {{ dans_api_archetype_repo_url }}
+[DANS CLI archetype]: {{ dans_cli_archetype_repo_url }}
 
 
 

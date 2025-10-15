@@ -34,6 +34,9 @@ plugins:
 extra:
   dropwizard: 'https://www.dropwizard.io/en/latest/'
   mvn_arch_plugin: 'https://maven.apache.org/archetype/maven-archetype-plugin/'
+  dans_api_archetype_repo_url: 'https://dans-knaw.github.io/dans-api-archetype/'
+  dans_cli_archetype_repo_url: 'https://dans-knaw.github.io/dans-cli-archetype/'
+  dans_core_systems_repo_url: 'https://github.com/DANS-KNAW/dans-core-systems'
 
 markdown_extensions:
   - attr_list
