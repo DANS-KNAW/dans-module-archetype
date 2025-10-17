@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -19,6 +22,7 @@
 
     <properties>
         <main-class>${package}.${javaName}Application</main-class>
+        <${artifactId}-api.version>0.1.0-SNAPSHOT</${artifactId}-api.version>
     </properties>
 
     <scm>
@@ -35,6 +39,13 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!-- START >> Uncomment after building the API module
+        <dependency>
+            <groupId>nl.knaw.dans</groupId>
+            <artifactId>${artifactId}-api</artifactId>
+            <version>${${artifactId}-api.version}</version>
+        </dependency>
+        END << Uncomment after building the API module -->
     </dependencies>
 
     <build>
@@ -43,6 +54,63 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration combine.children="override">
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <!-- START >>> Uncomment after building the API module
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile-dependencies</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>nl.knaw.dans</groupId>
+                                    <artifactId>dd-dataverse-ingest-api</artifactId>
+                                    <version>${${artifactId}-api.version}</version>
+                                    <outputDirectory>${project.build.directory}/openapi</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration combine.children="override">
+                            <generatorName>jaxrs-spec</generatorName>
+                            <inputSpec>${project.build.directory}/openapi/${artifactId}-api.yml</inputSpec>
+                            <apiPackage>${package}.resources</apiPackage>
+                            <modelPackage>${package}.api</modelPackage>
+                            <invokerPackage>${package}.resources</invokerPackage>
+                            <templateDirectory>${project.basedir}/src/main/resources/openapi-generator-templates</templateDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            END <<< Uncomment after building the API module -->
         </plugins>
     </build>
 
