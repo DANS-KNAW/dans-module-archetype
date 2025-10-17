@@ -82,7 +82,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>nl.knaw.dans</groupId>
-                                    <artifactId>dd-dataverse-ingest-api</artifactId>
+                                    <artifactId>${artifactId}-api</artifactId>
                                     <version>${${artifactId}-api.version}</version>
                                     <outputDirectory>${project.build.directory}/openapi</outputDirectory>
                                 </artifactItem>
