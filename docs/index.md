@@ -3,25 +3,19 @@ dans-module-archetype
 
 Generate a skeleton DANS Module.
 
-SYNOPSIS
---------
-```text
-generate-dans-module.sh
-```
-
-DESCRIPTION
------------
+Purpose
+-------
 Creates a DANS module based on [DropWizard]({{ dropwizard }}){:target=_blank:}. It uses the [maven archetype plugin]({{ mvn_arch_plugin }}){:target=_blank:}.
 
 
-ARGUMENTS
-----------
+Interface
+---------
 The `generate-dans-module.sh` script will interactively query you for argument values.
 
-EXAMPLES
---------
+Example
+-------
 
-This assumes that you have copied the `generate-dans-module.sh` script to a directory that is on your `$PATH`. On the Mac that could be `/usr/local/bin`
+This assumes that you have copied the `generate-dans-module.sh` script to a directory that is on your `$PATH`.
 
 ```text
 cd ~/git/test/
@@ -68,25 +62,3 @@ projectName: Dans Test Module
 
 Now hit Enter to accept these settings and the module will be generated and built for the first time.
 
-INSTALLATION AND CONFIGURATION
-------------------------------
-
-* Add `https://maven.dans.knaw.nl/releases/` as a plug-in repository if you want to use a released version of this archetype.
-* Clone and build the project if you want to use a snapshot.
-
-DEVELOPMENT
------------
-
-### Building from source
-
-Prerequisites:
-
-* Maven 3.3.3 or higher
-
-Steps:
-
-```commandline
-git clone https://github.com/DANS-KNAW/dans-module-archetype.git
-cd dans-module-archetype
-mvn install
-```
