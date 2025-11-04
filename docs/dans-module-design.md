@@ -1,9 +1,9 @@
 DANS module design
 ==================
 
-This document describes the design of a DANS module. By following a standard design and coding style we hope to make it easier for developers to understand
-each other's code and to make it easier to maintain and extend the code. The design builds on the Dropwizard conventions but go beyond that, filling in the
-blanks where Dropwizard is silent and adding some extra conventions that are specific to DANS.
+This document describes the design of a DANS microservice module. By following a standard design and coding style we hope to make it easier for developers to
+understand each other's code and to make it easier to maintain and extend the code. The design builds on the Dropwizard conventions but go beyond that, filling 
+in the blanks where Dropwizard is silent and adding some extra conventions that are specific to DANS.
 
 Project structure
 -----------------
@@ -126,13 +126,13 @@ API definition
 
 The API is defined in an OpenAPI file. The file is located in a separate project called `<module-name>-api`. The reason why the API is defined in a separate
 project is that is can be distributed as a Maven artifact. This allows other projects to use the API definition to generate client code for the microservice.
-The API project is very simple and serves only to create a JAR file with the OpenAPI file in it. A skeleton for the API project can be created with the 
+The API project is very simple and serves only to create a JAR file with the OpenAPI file in it. A skeleton for the API project can be created with the
 [DANS API archetype]{:target=_blank}.
 
 Command line interface
 ----------------------
 
-Most services will have a command line interface (CLI) that an administrator can use to issue commands to the service. To generate a CLI project use 
+Most services will have a command line interface (CLI) that an administrator can use to issue commands to the service. To generate a CLI project use
 [DANS CLI archetype]{:target=_blank}.
 
 [Dropwizard convention]: https://www.dropwizard.io/en/latest/manual/core.html#organizing-your-project

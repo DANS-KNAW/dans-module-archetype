@@ -5,7 +5,8 @@ Generate a skeleton DANS Module.
 
 Purpose
 -------
-Creates a DANS module based on [DropWizard]({{ dropwizard }}){:target=_blank:}. It uses the [maven archetype plugin]({{ mvn_arch_plugin }}){:target=_blank:}.
+Creates a DANS microservice module based on [DropWizard]({{ dropwizard }}){:target=_blank:}. It uses the 
+[maven archetype plugin]({{ mvn_arch_plugin }}){:target=_blank:}.
 
 
 Interface
