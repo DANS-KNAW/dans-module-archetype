@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Module design - dans-module-archetype</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Module design";
+        var mkdocs_page_input_path = "dans-module-design.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dans-module-archetype
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Manual</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Description</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Module design</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-structure">Project structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#java-packages">Java packages</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generated-classes">Generated classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data-transfer-object-dto-classes">Data Transfer Object (DTO) classes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resource-interfaces">Resource interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#client-classes">Client classes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#services">Services</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#application-and-configuration">Application and configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-definition">API definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-line-interface">Command line interface</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../context/">Context</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dans-module-archetype</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Module design</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/DANS-KNAW/dans-module-archetype/edit/master/docs/dans-module-design.md">Edit on DANS-KNAW/dans-module-archetype</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dans-module-design">DANS module design<a class="headerlink" href="#dans-module-design" title="Permanent link">&para;</a></h1>
+<p>This document describes the design of a DANS microservice module. By following a standard design and coding style we hope to make it easier for developers to
+understand each other's code and to make it easier to maintain and extend the code. The design builds on the Dropwizard conventions but go beyond that, filling 
+in the blanks where Dropwizard is silent and adding some extra conventions that are specific to DANS.</p>
+<h2 id="project-structure">Project structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<p>Projects use the standard Maven project structure. The main source code is in <code>src/main/java</code>, the test code in <code>src/test/java</code>. The main resources are in
+<code>src/main/resources</code>, the test resources in <code>src/test/resources</code>. The <code>pom.xml</code> file is in the root of the project.</p>
+<p>DANS specific additions are documented in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data/</code></td>
+<td>Contains data files that are used for testing and debugging. <br><strong>Ignored by Git.</strong></td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>Contains static files for the documentation site.</td>
+</tr>
+<tr>
+<td><code>etc/</code></td>
+<td>Contains configuration files for local testing. <strong>Ignored by Git.</strong></td>
+</tr>
+<tr>
+<td><code>src/main/assembly/dist</code></td>
+<td>Contains static files that are used in the creation of the (RPM) <br>distribution package.</td>
+</tr>
+<tr>
+<td><code>src/main/rpm</code></td>
+<td>RPM scriplets. (Normally, these do not need to be modified.)</td>
+</tr>
+<tr>
+<td><code>src/test/resources/debug-etc</code></td>
+<td>Contains a version of the configuration files that is geared towards<br> debugging locally.</td>
+</tr>
+<tr>
+<td><code>src/test/resources/test-etc</code></td>
+<td>(Optional) contains one of more versions of the configurtion files used<br> in unit testing.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-packages">Java packages<a class="headerlink" href="#java-packages" title="Permanent link">&para;</a></h2>
+<p>The main package of a module is <code>nl.knaw.dans.&lt;module-name&gt;</code>, where <code>&lt;module-name&gt;</code> is the name of the module in lowercase, sometimes shortened a bit. Under
+this main package we use the <a href="https://www.dropwizard.io/en/latest/manual/core.html#organizing-your-project" target="_blank">Dropwizard convention</a> with one addition: the classes that capture the configuration settings of the module are in
+the <code>nl.knaw.dans.&lt;module-name&gt;.config</code> package.</p>
+<p>Although Dropwizard does document the intended use of each package the documentation is not very detailed. The table below describes the intended use of each
+package in more detail.</p>
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>api</code></td>
+<td>Generated <a href="#data-transfer-object-dto-classes">DTO classes</a>.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td>Client classes for external services.</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>Configuration classes.</td>
+</tr>
+<tr>
+<td><code>core</code></td>
+<td>The core functionality of the module, including domain classes, some of which<br/> may be database entities.</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>Data Access Object (DAO) classes.</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>Health check classes.</td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>Implementations of the microservices HTTP API endpoints</td>
+</tr>
+<tr>
+<td><code>views</code></td>
+<td>View classes for rendering an html UI based on a template <br/> (present in some Dropwizard examples).</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <code>core</code> package is the most important one. It contains the domain classes and the business logic. The other packages are there to support the <code>core</code>. The
+  core package may contain a <code>services</code> subpackage which contains classes that implement other supporting services. See the section below
+  on <a href="#services">Services</a> for more information.</li>
+<li><code>db</code> should <strong>only</strong> contain DAO classes. These classes should be as simple as possible. They should not contain any business logic. Basically, DAOs are just
+  a thin layer on top of the database that deal with finding, creating, updating and deleting entities. Typical methods on a DAO
+  are <code>findById</code>, <code>findAll</code>, <code>create</code>, <code>update</code> and <code>delete</code>.</li>
+<li>Database entities are simply domain classes that are persisted in the database. They are annotated with JPA annotations so that they can be persisted by the
+  DAO classes. The DAO classes are responsible for creating, updating and deleting entities. Entities are located in the <code>core</code> package because they define
+  domain
+  concepts.</li>
+<li>The <code>resources</code> package contains the implementation of HTTP endpoints, both API and UI (if present). The API receives and sends back DTOs. Resources should
+  also <strong>not</strong> implement business logic.</li>
+<li>The <code>views</code> package contains the classes that render the UI. They are called from the resources and use templates to render the UI. This way of creating a UI
+  is called server-side rendering. The alternative is to use a JavaScript framework to render the UI on the client side. This is called client-side rendering.
+  We will probably use server-side rendering only for very simple UIs.</li>
+</ul>
+<h2 id="generated-classes">Generated classes<a class="headerlink" href="#generated-classes" title="Permanent link">&para;</a></h2>
+<p>A number of classes are generated from the OpenAPI specification of the module's API, which is defined in a separate project called <code>&lt;module-name&gt;-api</code>. If the
+microservice calls other microservices, the client code for those microservices is also generated, if possible.</p>
+<p>Generated code is not part of the code base, but is generated during the build process. The generated code is located under the <code>target</code> directory (
+in <code>target/generated-sources/openapi</code>).</p>
+<h3 id="data-transfer-object-dto-classes">Data Transfer Object (DTO) classes<a class="headerlink" href="#data-transfer-object-dto-classes" title="Permanent link">&para;</a></h3>
+<p>DTO classes define the messages that are sent to and from the microservice. They are usually serialized to and from JSON. The
+DTO classes for the microservice are in the <code>nl.knaw.dans.&lt;module-name&gt;.api</code> package. The DTO classes for the client classes are in
+the <code>nl.knaw.dans.&lt;client-module-name&gt;.client.api</code> package.</p>
+<h3 id="resource-interfaces">Resource interfaces<a class="headerlink" href="#resource-interfaces" title="Permanent link">&para;</a></h3>
+<p>Resource interfaces define the API endpoints of the microservice. They must be implemented by the resource classes. Both live in the same package namely
+<code>nl.knaw.dans.&lt;module-name&gt;.resources</code>. However, the resource <em>interfaces</em> are generated from the OpenAPI specification and therefore their source files are
+located under <code>target/generated-sources/openapi/</code> (and not <code>src/main/java</code>).</p>
+<h3 id="client-classes">Client classes<a class="headerlink" href="#client-classes" title="Permanent link">&para;</a></h3>
+<p>Client classes allow the microservice to call other microservices without having to deal with the details of the HTTP protocol. The generated client code
+provides the same DTOs and basically the same resource classes as the microservice itself. The client classes are located in
+the <code>nl.knaw.dans.&lt;client-module-name&gt;.client</code>. In order to stress the correspondence between the client and the microservice subpackage names are the same:</p>
+<ul>
+<li><code>api</code> - DTO classes</li>
+<li><code>resources</code> - API endpoints</li>
+</ul>
+<p>In some cases it makes sense to define a handwritten client class in <code>src/main/java/&lt;client-module-name&gt;/client</code>. For example, if the client class needs to do
+some extra processing on the DTOs before sending them to the microservice. Another reason could be to provide a façade for a number of endpoints.</p>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<p>Services are classes that implement some supporting functionality that is used by the core of the module. This functionality is usually a bit more generic than
+the rest of the core. The service class serves to isolate the core from the details of the implementation of the service. For example, a service may implement
+the functionality to send an email. The core may use this service to send an email message to a user, but it does not need to know how the email is sent. This
+also makes it easier to unit-test the main core classes, because the service can be mocked.</p>
+<p>That said, the boundary between the core and the services is not always clear-cut. That is why the services are located in
+the <code>nl.knaw.dans.&lt;module-name&gt;.core.services</code>. This makes it clear that these classes are part of the core, but not the main core classes. The classes in
+<code>services</code> should from time to time be reviewed to see if they can be moved to a separate library. It is a good practise to define an interface for each
+service and to use that interface in the core classes. This makes it easier to move the service to a separate library later on.</p>
+<p>Typical services are: reading XML files, sending emails, managing a task queue, etc.</p>
+<p>In essence, the classes in <code>client</code> and <code>db</code> are also services. However, because they are more clearly separate from the core, they are not located in the
+<code>core.services</code> package.</p>
+<h2 id="application-and-configuration">Application and configuration<a class="headerlink" href="#application-and-configuration" title="Permanent link">&para;</a></h2>
+<p>The application class is located in the <code>nl.knaw.dans.&lt;module-name&gt;</code> package. It is called <code>&lt;Module-name&gt;Application</code> and extends
+<code>io.dropwizard.core.Application</code>. Its purpose is to initialize the application. This means it will create all the bits and pieces that are needed to run the
+application and connect them together. It should not do anything else.</p>
+<p>The configuration class is located in the <code>nl.knaw.dans.&lt;module-name&gt;.config</code> It is called <code>&lt;Module-name&gt;Config</code> and extends <code>io.dropwizard.Configuration</code>. The
+configuration is serialized as YAML and is used to configure the application. It is a tree structure with every level corresponding to a bean class with a name
+that ends with <code>Config</code>. Since this can amount to a lot of classes, the configuration is usually split up in multiple files, and the helper files should also be
+located in the <code>nl.knaw.dans.&lt;module-name&gt;.config</code> package.</p>
+<h2 id="api-definition">API definition<a class="headerlink" href="#api-definition" title="Permanent link">&para;</a></h2>
+<p>The API is defined in an OpenAPI file. The file is located in a separate project called <code>&lt;module-name&gt;-api</code>. The reason why the API is defined in a separate
+project is that is can be distributed as a Maven artifact. This allows other projects to use the API definition to generate client code for the microservice.
+The API project is very simple and serves only to create a JAR file with the OpenAPI file in it. A skeleton for the API project can be created with the
+<a href="https://dans-knaw.github.io/dans-api-archetype/" target="_blank">DANS API archetype</a>.</p>
+<h2 id="command-line-interface">Command line interface<a class="headerlink" href="#command-line-interface" title="Permanent link">&para;</a></h2>
+<p>Most services will have a command line interface (CLI) that an administrator can use to issue commands to the service. To generate a CLI project use
+<a href="https://dans-knaw.github.io/dans-cli-archetype/" target="_blank">DANS CLI archetype</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../context/" class="btn btn-neutral float-right" title="Context">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/DANS-KNAW/dans-module-archetype" class="fa fa-code-fork" style="color: #fcfcfc"> DANS-KNAW/dans-module-archetype</a>
+        </span>
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../context/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
