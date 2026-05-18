@@ -23,10 +23,12 @@ repo_url: https://github.com/DANS-KNAW/dans-module-archetype
 
 nav:
   - Manual:
-      Description: index.md
-      Installation: installation.md
-  - Module design: dans-module-design.md
-  - Context: context.md
+      - Description: index.md
+      - Getting started: getting-started.md
+      - Module design: dans-module-design.md
+      - Context: context.md
+  - Development:
+      - Overview: dev.md
 
 plugins:
   - markdownextradata
