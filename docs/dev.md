@@ -12,7 +12,7 @@ General
 
 Prerequisites:
 
-* Maven 3.3.3 or higher
+* Maven 3.8.7 or higher
 
 Steps:
 
