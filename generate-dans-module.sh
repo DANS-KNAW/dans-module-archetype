@@ -15,6 +15,8 @@
 # limitations under the License.
 #
 
+set -euo pipefail
+
 # Check requirements
 if ! command -v xmlstarlet &> /dev/null; then
     echo "xmlstarlet could not be found. Please install it to continue."
@@ -46,6 +48,6 @@ mvn archetype:generate -DarchetypeGroupId=nl.knaw.dans \
         -DinceptionYear="$(date +'%Y')"
 
 pushd $ARTIFACT_ID || exit 1
-bash init-project.sh
+bash init-project.sh || exit 1
 rm init-project.sh
 popd || exit 1

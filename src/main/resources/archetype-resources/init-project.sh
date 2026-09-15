@@ -15,6 +15,8 @@
 # limitations under the License.
 #
 
+set -euo pipefail
+
 START_ENV="start-env.sh"
 
 echo Setting .gitignore...
