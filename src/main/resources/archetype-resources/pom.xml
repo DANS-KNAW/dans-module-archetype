@@ -17,7 +17,7 @@
 
     <name>${projectName}</name>
     <description>${description}</description>
-    <url>https://github.com/DANS-KNAW/${artifactId}</url>
+    <url>https://dans-knaw.github.io/${artifactId}</url>
     <inceptionYear>${inceptionYear}</inceptionYear>
 
     <scm>
