@@ -20,15 +20,15 @@
     <url>https://github.com/DANS-KNAW/${artifactId}</url>
     <inceptionYear>${inceptionYear}</inceptionYear>
 
-    <properties>
-        <main-class>${package}.${javaName}Application</main-class>
-        <${artifactId}-api.version>0.1.0-SNAPSHOT</${artifactId}-api.version>
-    </properties>
-
     <scm>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${artifactId}</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
+    <properties>
+        <main-class>${package}.${javaName}Application</main-class>
+        <${artifactId}-api.version>0.1.0-SNAPSHOT</${artifactId}-api.version>
+    </properties>
 
     <dependencies>
         <dependency>
