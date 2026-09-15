@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype-descriptor
-        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
-        name="easy-module-template"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 https://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+        name="dans-module-template"
         xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <requiredProperties>
@@ -23,7 +23,7 @@
         <fileSet filtered="true" encoding="UTF-8">
             <directory>docs</directory>
             <includes>
-                <include>*</include>
+                <include>**/*</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -41,13 +41,13 @@
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/main/assembly</directory>
             <includes>
-                <include>**/**</include>
+                <include>**/*</include>
             </includes>
         </fileSet>
         <fileSet filtered="false" encoding="UTF-8">
             <directory>src/main/resources</directory>
             <includes>
-                <include>**/**</include>
+                <include>**/*</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -61,23 +61,33 @@
             <includes>
                 <include>*</include>
             </includes>
+            <excludes>
+                <exclude>debug-etc</exclude>
+                <exclude>debug-etc/**</exclude>
+            </excludes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>src/test/resources/debug-etc</directory>
             <includes>
-                <include>**/**</include>
+                <include>**/*</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
             <directory>.github</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
-            <directory />
+            <directory/>
             <includes>
                 <include>*</include>
             </includes>
             <excludes>
                 <exclude>pom.xml</exclude>
+                <exclude>docs</exclude>
+                <exclude>src</exclude>
+                <exclude>.github</exclude>
             </excludes>
         </fileSet>
     </fileSets>

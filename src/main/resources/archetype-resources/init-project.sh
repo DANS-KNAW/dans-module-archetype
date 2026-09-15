@@ -50,4 +50,5 @@ fi
 # at the end of the script bash looks for the closing one and signals a syntax error.
 #
 echo Building...
+mvn sortpom:sort
 mvn generate-sources license:format install
