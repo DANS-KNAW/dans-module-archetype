@@ -23,6 +23,7 @@
     <scm>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${artifactId}</developerConnection>
         <tag>HEAD</tag>
+        <url>https://github.com/DANS-KNAW/${artifactId}</url>
     </scm>
 
     <properties>
