@@ -21,6 +21,7 @@
     <inceptionYear>${inceptionYear}</inceptionYear>
 
     <scm>
+        <connection>scm:git:https://github.com/DANS-KNAW/${artifactId}</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${artifactId}</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/DANS-KNAW/${artifactId}</url>
