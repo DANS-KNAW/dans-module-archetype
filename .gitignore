@@ -30,4 +30,4 @@
 /.settings
 /.cladocssspath
 /.cache
-
+/__pycache__*
